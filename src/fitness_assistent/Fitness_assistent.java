@@ -63,6 +63,7 @@ public class Fitness_assistent {
 	       größe_double = Double.parseDouble(größe);//Datentyp String zu Double umwandeln
 	 }
 	
+	
 	//(3) Abfrage Gewicht
 	System.out.println("");
 	System.out.println("Wieviel wiegst du? (Gib dein Gewicht in kg an)");
@@ -110,33 +111,241 @@ public class Fitness_assistent {
 		gewicht_double = Double.parseDouble(gewicht);
 	}
 		
-		
+	
 	//(4) Abfrage Alter
 	System.out.println("");
 	System.out.println("Wie alt bist du? (Runde dein Alter auf eine ganze Zahl auf)");
 	int alter = scanner.nextInt();
 	
+	//(4) Scanner leeren
+	scanner.nextLine();
 	
-	//(5) Auswertung BMI
+	//(5) Info
+	System.out.println("");
+	System.out.println("      [ INFO ]");
+	System.out.println("");
+	System.out.println("      Der BMI wird je nach Geschlecht und Alter unterschiedlich weiterverarbeitet.");
+	System.out.println("      z.B. besitzen Menschen die als Mann geboren wurden häufiger einen höheren Muskelanteil im Vergleich zu Menschen, die als Frau geboren wurden.");
+	System.out.println("      Auch ändert sich z.B die Körperzusammensetzung im Laufe der Zeit wenn ein Mensch eine geschlechtsangleichende Hormontherapie (HRT) durchführt.");
+	System.out.println("      Es gibt darüber hinaus weitere Faktoren, die den BMI beeinflussen (z.B Amputationen einzelner Gliedmaßen).");
+	System.out.println("");
+	System.out.println("      Generell dient der BMI als grober Richtwert, da die Körperzusammensetzung von Muskulatur und Fettmasse von Mensch zu Mensch verschieden ist.");
+	System.out.println("");
+	
+	//(5) Frage nach m/w/d
+	System.out.println("");
+	System.out.println("Was möchtest du für die Auswertung angeben?");
+	System.out.println("Folgende Auswahlmöglichkeiten hast du:");
+	System.out.println("");
+	System.out.println("m steht für männlich");
+	System.out.println("w steht für weiblich");
+	System.out.println("d steht für divers");
+	System.out.println("");
+	System.out.println("Bitte gib jetzt den für dich passenden Buchstaben ein:");
+	
+	//(5) Variable deklarieren
+	String geschlecht;
+	
+	//(5) Antwort scannen
+	geschlecht = scanner.nextLine();
+	
+	//(5) if else Anweisung für die Wertezuweisung 
+	if (geschlecht.equalsIgnoreCase("m"))
+	{geschlecht = "männlich";}
+	else if (geschlecht.equalsIgnoreCase("w"))
+	{geschlecht = "weiblich";}
+	else 
+	{geschlecht = "divers";}
+	
+	//(6) Auswertung 
 	System.out.println("");
 	System.out.println("Danke für deine Angaben.");
-	System.out.println("Nachfolgend siehst du deine Körperwerte und den daraus resulierenden BMI (Body-Mass-Index)");
+	System.out.println("Nachfolgend siehst du deine Körperwerte und den daraus resultierenden BMI (Body-Mass-Index)");
 	System.out.println("");
-	System.out.println("                  Name    : "+name);
-	System.out.println("                  Alter   : "+alter+" Jahre");
-	System.out.println("                  Größe   : "+größe_double+" m");
-	System.out.println("                  Gewicht : "+gewicht_double+" kg");
+	System.out.println("                  Name       : "+name);
+	System.out.println("                  Alter      : "+alter+" Jahre");
+	System.out.println("                  Größe      : "+größe_double+" m");
+	System.out.println("                  Gewicht    : "+gewicht_double+" kg");
+	System.out.println("                  Geschlecht : "+geschlecht);
 	System.out.println("");
-	//(5) BMI berechnen
+	System.out.println("");
+	
+	
+	
+	//(7) BMI berechnen
 	double bmi;
 	bmi = gewicht_double/(größe_double*größe_double);
+	bmi = Math.round(bmi*100.0)/100.0;//Auf eine Nachkommastellen runden. Daher 10.0 (Bei zwei Nachkommastelle 100/bei drei Nachkommastellen 1000...u.s.w)
 	
-	System.out.printf("         Dein BMI beträgt : %.2f%n",bmi);//BMI auf zwei Nachkommastellen runden
 	
-		}
+	//(8) if else Anweisung für die Auswertung je nach m/w/d Eingabe
+	if (geschlecht.equalsIgnoreCase("männlich"))
+	{
+	
+		//BMI Wert zuordnen
+		String einordnung;
+	
+		if (bmi<20)
+		{ einordnung = " → Untergewicht";}
+	
+		else if (bmi>=20.0&&bmi<=25.9)
+		{ einordnung = " → Normalgewicht";}
+	
+		else if (bmi>=26&&bmi<=30.0)
+		{ einordnung = " → Übergewicht";}
+	
+		else 
+		{ einordnung = " → Adipositas";}
+	
+		//Ergebnis ausgeben
+		System.out.println("               Dein BMI beträgt : "+bmi+einordnung);
+		System.out.println("");
+		System.out.println("");
+	
+		//Gewichtsklassen berechnen
+	
+		double größe_double_2 = größe_double*größe_double;
+		//größe_double_2 = Math.round(größe_double_2*10.0)/10.0;
+	
+	
+	
+		double bmi_normalgewicht_u = 20.0*größe_double_2;
+		bmi_normalgewicht_u = Math.round(bmi_normalgewicht_u*10.0)/10.0;
+	
+		double bmi_normalgewicht_o = 25.0*größe_double_2;
+		bmi_normalgewicht_o = Math.round(bmi_normalgewicht_o*10.0)/10.0;
+	
+		double bmi_übergewicht_u = 25.01*größe_double_2;//Rundungsfehler behoben (300g vorher da 25.1 angegeben war)
+		bmi_übergewicht_u = Math.round(bmi_übergewicht_u*10.0)/10.0;
+	
+		double bmi_übergewicht_o = 30.0*größe_double_2;
+		bmi_übergewicht_o = Math.round(bmi_übergewicht_o*10.0)/10.0;
+	
 		
-		
 	
+	
+		//Tabelle BMI ausgeben
+		System.out.println("        …………………………………………………………………………………………………………………………………………     ");
+		System.out.println("            KATEGORIE                    GEWICHT                 ");
+		System.out.println("        …………………………………………………………………………………………………………………………………………     ");
+		System.out.println("            Untergewicht       ⁞ unter "+bmi_normalgewicht_u+" kg");
+		System.out.println("            Normalgewicht      ⁞ von   "+bmi_normalgewicht_u+" - "+bmi_normalgewicht_o+" kg");
+		System.out.println("            Übergewicht        ⁞ von   "+bmi_übergewicht_u+" - "+bmi_übergewicht_o+" kg");
+		System.out.println("            Adipositas         ⁞ über  "+bmi_übergewicht_o+" kg");
+		System.out.println("        …………………………………………………………………………………………………………………………………………     ");
 	}
+	
+	else if (geschlecht.equalsIgnoreCase("weiblich"))
+	{  
+		//BMI Wert zuordnen
+		String einordnung;
+			
+		if (bmi<19)
+		{ einordnung = " → Untergewicht";}
+			
+		else if (bmi>=19.0&&bmi<=24.9)
+		{ einordnung = " → Normalgewicht";}
+			
+		else if (bmi>=25.0&&bmi<=29.0)
+		{ einordnung = " → Übergewicht";}
+			
+		else 
+		{ einordnung = " → Adipositas";}
+			
+		//Ergebnis ausgeben
+		System.out.println("               Dein BMI beträgt : "+bmi+einordnung);
+		System.out.println("");
+		System.out.println("");
+			
+		//Gewichtsklassen berechnen
+			
+		double größe_double_2 = größe_double*größe_double;
+		größe_double_2 = Math.round(größe_double_2*10.0)/10.0;
+			
+			
+			
+		double bmi_normalgewicht_u = 19.0*größe_double_2;
+		bmi_normalgewicht_u = Math.round(bmi_normalgewicht_u*10.0)/10.0;
+			
+		double bmi_normalgewicht_o = 24.9*größe_double_2;
+		bmi_normalgewicht_o = Math.round(bmi_normalgewicht_o*10.0)/10.0;
+			
+		double bmi_übergewicht_u = 25.0*größe_double_2;
+		bmi_übergewicht_u = Math.round(bmi_übergewicht_u*10.0)/10.0;
+			
+		double bmi_übergewicht_o = 29.0*größe_double_2;
+		bmi_übergewicht_o = Math.round(bmi_übergewicht_o*10.0)/10.0;
+			
+		//Achtung Rundungsfehler!Muss noch behoben werden!
+			
+			
+		//Tabelle BMI ausgeben
+		System.out.println("        …………………………………………………………………………………………………………………………………………     ");
+		System.out.println("            KATEGORIE                    GEWICHT                 ");
+		System.out.println("        …………………………………………………………………………………………………………………………………………     ");
+		System.out.println("            Untergewicht       ⁞ unter "+bmi_normalgewicht_u+" kg");
+		System.out.println("            Normalgewicht      ⁞ von   "+bmi_normalgewicht_u+" - "+bmi_normalgewicht_o+" kg");
+		System.out.println("            Übergewicht        ⁞ von   "+bmi_übergewicht_u+" - "+bmi_übergewicht_o+" kg");
+		System.out.println("            Adipositas         ⁞ über  "+bmi_übergewicht_o+" kg");
+		System.out.println("        …………………………………………………………………………………………………………………………………………     ");
+	}
+	
+	else
+	{
+		//BMI Wert zuordnen
+		String einordnung;
+					
+		if (bmi<19.5)
+		{ einordnung = " → Untergewicht";}
+					
+		else if (bmi>=19.5&&bmi<=25.4)
+		{ einordnung = " → Normalgewicht";}
+					
+		else if (bmi>=25.5&&bmi<=29.5)
+		{ einordnung = " → Übergewicht";}
+					
+		else 
+		{ einordnung = " → Adipositas";}
+					
+		//Ergebnis ausgeben
+		System.out.println("               Dein BMI beträgt : "+bmi+einordnung);
+		System.out.println("");
+		System.out.println("");
+					
+		//Gewichtsklassen berechnen
+					
+		double größe_double_2 = größe_double*größe_double;
+		größe_double_2 = Math.round(größe_double_2*10.0)/10.0;
+					
+					
+					
+		double bmi_normalgewicht_u = 19.5*größe_double_2;
+		bmi_normalgewicht_u = Math.round(bmi_normalgewicht_u*10.0)/10.0;
+					
+		double bmi_normalgewicht_o = 25.4*größe_double_2;
+		bmi_normalgewicht_o = Math.round(bmi_normalgewicht_o*10.0)/10.0;
+					
+		double bmi_übergewicht_u = 25.5*größe_double_2;
+		bmi_übergewicht_u = Math.round(bmi_übergewicht_u*10.0)/10.0;
+					
+		double bmi_übergewicht_o = 29.5*größe_double_2;
+		bmi_übergewicht_o = Math.round(bmi_übergewicht_o*10.0)/10.0;
+					
+		//Achtung Rundungsfehler!Muss noch behoben werden!
+					
+					
+		//Tabelle BMI ausgeben
+		System.out.println("        …………………………………………………………………………………………………………………………………………     ");
+		System.out.println("            KATEGORIE                    GEWICHT                 ");
+		System.out.println("        …………………………………………………………………………………………………………………………………………     ");
+		System.out.println("            Untergewicht       ⁞ unter "+bmi_normalgewicht_u+" kg");
+		System.out.println("            Normalgewicht      ⁞ von   "+bmi_normalgewicht_u+" - "+bmi_normalgewicht_o+" kg");
+		System.out.println("            Übergewicht        ⁞ von   "+bmi_übergewicht_u+" - "+bmi_übergewicht_o+" kg");
+		System.out.println("            Adipositas         ⁞ über  "+bmi_übergewicht_o+" kg");
+		System.out.println("        …………………………………………………………………………………………………………………………………………     ");
+	}	
+		
+		
+	}}
 
 
