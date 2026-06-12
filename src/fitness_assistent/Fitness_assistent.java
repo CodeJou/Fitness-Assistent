@@ -112,7 +112,7 @@ public class Fitness_assistent {
 	}
 		
 	
-	//(4) Abfrage Alter
+	//(4) Abfrage Alter                                !Eingabevalidierung bearbeiten!
 	System.out.println("");
 	System.out.println("Wie alt bist du? (Runde dein Alter auf eine ganze Zahl auf)");
 	int alter = scanner.nextInt();
@@ -149,7 +149,7 @@ public class Fitness_assistent {
 	//(5) Antwort scannen
 	geschlecht = scanner.nextLine();
 	
-	//(5) if else Anweisung für die Wertezuweisung 
+	//(5) if else Anweisung für die Wertezuweisung        !Eingabevalidierung verbessern!
 	if (geschlecht.equalsIgnoreCase("m"))
 	{geschlecht = "männlich";}
 	else if (geschlecht.equalsIgnoreCase("w"))
@@ -191,7 +191,7 @@ public class Fitness_assistent {
 		else if (bmi>=20.0&&bmi<=25.9)
 		{ einordnung = " → Normalgewicht";}
 	
-		else if (bmi>=26&&bmi<=30.0)
+		else if (bmi>=25.91&&bmi<=30.0)
 		{ einordnung = " → Übergewicht";}
 	
 		else 
@@ -204,21 +204,20 @@ public class Fitness_assistent {
 	
 		//Gewichtsklassen berechnen
 	
-		double größe_double_2 = größe_double*größe_double;
-		//größe_double_2 = Math.round(größe_double_2*10.0)/10.0;
+		double größe_double_2 = größe_double*größe_double;//größe mal größe vorgerechnet um Formel nachfolgend zu kürzen
+		
 	
+		
+		double bmi_normalgewicht_u = 20.0*größe_double_2;//Berechnung unterer Wert für Normalgewicht
+		bmi_normalgewicht_u = Math.round(bmi_normalgewicht_u*10.0)/10.0;//Rundung auf eine Nachkommastelle
 	
-	
-		double bmi_normalgewicht_u = 20.0*größe_double_2;
-		bmi_normalgewicht_u = Math.round(bmi_normalgewicht_u*10.0)/10.0;
-	
-		double bmi_normalgewicht_o = 25.0*größe_double_2;
+		double bmi_normalgewicht_o = 25.0*größe_double_2;//Berechnung oberer Wert für Normalgewicht
 		bmi_normalgewicht_o = Math.round(bmi_normalgewicht_o*10.0)/10.0;
 	
-		double bmi_übergewicht_u = 25.01*größe_double_2;//Rundungsfehler behoben (300g vorher da 25.1 angegeben war)
+		double bmi_übergewicht_u = 25.01*größe_double_2;//Rundungsfehler behoben (300g vorher da 25.1 angegeben war) Berechnung unterer Wert Übergewicht
 		bmi_übergewicht_u = Math.round(bmi_übergewicht_u*10.0)/10.0;
 	
-		double bmi_übergewicht_o = 30.0*größe_double_2;
+		double bmi_übergewicht_o = 30.0*größe_double_2;//Berechnung oberer Wert Übergewicht
 		bmi_übergewicht_o = Math.round(bmi_übergewicht_o*10.0)/10.0;
 	
 		
@@ -246,13 +245,13 @@ public class Fitness_assistent {
 		else if (bmi>=19.0&&bmi<=24.9)
 		{ einordnung = " → Normalgewicht";}
 			
-		else if (bmi>=25.0&&bmi<=29.0)
+		else if (bmi>=24.91&&bmi<=29.0)
 		{ einordnung = " → Übergewicht";}
 			
 		else 
 		{ einordnung = " → Adipositas";}
 			
-		//Ergebnis ausgeben
+		//Ergebnis BMI mit zuordnung Wertebereich ausgeben
 		System.out.println("               Dein BMI beträgt : "+bmi+einordnung);
 		System.out.println("");
 		System.out.println("");
@@ -270,7 +269,7 @@ public class Fitness_assistent {
 		double bmi_normalgewicht_o = 24.9*größe_double_2;
 		bmi_normalgewicht_o = Math.round(bmi_normalgewicht_o*10.0)/10.0;
 			
-		double bmi_übergewicht_u = 25.0*größe_double_2;
+		double bmi_übergewicht_u = 24.91*größe_double_2;
 		bmi_übergewicht_u = Math.round(bmi_übergewicht_u*10.0)/10.0;
 			
 		double bmi_übergewicht_o = 29.0*größe_double_2;
@@ -279,7 +278,7 @@ public class Fitness_assistent {
 		//Achtung Rundungsfehler!Muss noch behoben werden!
 			
 			
-		//Tabelle BMI ausgeben
+		//Tabelle Gewichtskategorie ausgeben
 		System.out.println("        …………………………………………………………………………………………………………………………………………     ");
 		System.out.println("            KATEGORIE                    GEWICHT                 ");
 		System.out.println("        …………………………………………………………………………………………………………………………………………     ");
@@ -301,7 +300,7 @@ public class Fitness_assistent {
 		else if (bmi>=19.5&&bmi<=25.4)
 		{ einordnung = " → Normalgewicht";}
 					
-		else if (bmi>=25.5&&bmi<=29.5)
+		else if (bmi>=25.41&&bmi<=29.5)
 		{ einordnung = " → Übergewicht";}
 					
 		else 
@@ -325,7 +324,7 @@ public class Fitness_assistent {
 		double bmi_normalgewicht_o = 25.4*größe_double_2;
 		bmi_normalgewicht_o = Math.round(bmi_normalgewicht_o*10.0)/10.0;
 					
-		double bmi_übergewicht_u = 25.5*größe_double_2;
+		double bmi_übergewicht_u = 25.41*größe_double_2;
 		bmi_übergewicht_u = Math.round(bmi_übergewicht_u*10.0)/10.0;
 					
 		double bmi_übergewicht_o = 29.5*größe_double_2;
