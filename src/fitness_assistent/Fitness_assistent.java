@@ -305,6 +305,18 @@ public class Fitness_assistent {
 		System.out.println("            Übergewicht        ⁞ von   "+bmi_übergewicht_u+" - "+bmi_übergewicht_o+" kg");
 		System.out.println("            Adipositas         ⁞ über  "+bmi_übergewicht_o+" kg");
 		System.out.println("        …………………………………………………………………………………………………………………………………………     ");
+		
+		
+		//Grundumsatz berechnen
+		double größe_cm = größe_double*100;//Größe von m in cm umrechnen
+		
+		double grundumsatz;//Variable deklarieren
+		
+		grundumsatz = (10*gewicht_double)+(6.25*größe_cm)-(5*alter)+5;
+		
+		System.out.println("");
+		System.out.println("       → Dein Gundumsatz beträgt : "+grundumsatz+" kcal/täglich");
+		System.out.println("       (Der Grundumsatz wurde mit der Mifflin-St.-Jeor-Formel berechnet)");
 	}
 	
 	else if (geschlecht.equalsIgnoreCase("weiblich"))
@@ -360,11 +372,22 @@ public class Fitness_assistent {
 		System.out.println("            Übergewicht        ⁞ von   "+bmi_übergewicht_u+" - "+bmi_übergewicht_o+" kg");
 		System.out.println("            Adipositas         ⁞ über  "+bmi_übergewicht_o+" kg");
 		System.out.println("        …………………………………………………………………………………………………………………………………………     ");
+		
+		//Grundumsatz berechnen
+		double größe_cm = größe_double*100;//Größe von m in cm umrechnen
+				
+		double grundumsatz;//Variable deklarieren
+				
+		grundumsatz = (10*gewicht_double)+(6.25*größe_cm)-(5*alter)-161;
+				
+		System.out.println("");
+		System.out.println("       → Dein Gundumsatz beträgt : "+grundumsatz+" kcal/täglich");
+		System.out.println("       (Der Grundumsatz wurde mit der Mifflin-St.-Jeor-Formel berechnet)");
 	}
 	
 	else
 	{
-		//BMI Wert zuordnen
+		//BMI Wert zuordnen (Mittelwert aus m und w)
 		String einordnung;
 					
 		if (bmi<19.5)
@@ -415,9 +438,36 @@ public class Fitness_assistent {
 		System.out.println("            Übergewicht        ⁞ von   "+bmi_übergewicht_u+" - "+bmi_übergewicht_o+" kg");
 		System.out.println("            Adipositas         ⁞ über  "+bmi_übergewicht_o+" kg");
 		System.out.println("        …………………………………………………………………………………………………………………………………………     ");
+		
+		//Grundumsatz berechnen
+		double größe_cm = größe_double*100;//Größe von m in cm umrechnen
+						
+		double grundumsatz;//Variable deklarieren
+						
+		grundumsatz = (10*gewicht_double)+(6.25*größe_cm)-(5*alter)-83;//Mittelwert berechnet aus m und w
+						
+		System.out.println("");
+		System.out.println("       → Dein Gundumsatz beträgt : "+grundumsatz+" kcal/täglich");
+		System.out.println("       (Der Grundumsatz wurde mit der Mifflin-St.-Jeor-Formel und dem Mittelwert aus w und m berechnet)");
 	}	
 		
-		
+	//(9) Infos zum Grundumsatz
+
+	System.out.println("");
+	System.out.println("");
+	System.out.println("");
+	System.out.println("");
+    System.out.println("      [ INFO ]");
+    System.out.println("");
+    System.out.println("      Als Grundumsatz bezeichnet man die Energie, die der Körper aufwendet um in absoluter Ruhe zu Funktionieren.");
+    System.out.println("      Alltagsaktivitäten wie Gehen/Arbeiten/Hobbys/Sport führen zu einem zusätzlichen Energiebedarf und werden zum Grundumsatz hinzugerechnet.");
+    System.out.println("      Dieser Wert wird als Leistungsumsatz bezeichnet.");
+    System.out.println("");
+    System.out.println("      Der angegebene Grundumsatz ist nur ein grober Richtwert, da dieser individuell nach Körperzusammensetzung ausfällt!");
+    System.out.println("");
+    System.out.println("");
+    System.out.println("");
+    System.out.println("");
 	}}
 
-
+	
