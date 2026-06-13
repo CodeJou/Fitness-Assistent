@@ -179,8 +179,8 @@ public class Fitness_assistent {
 	//(4) Eingabevalidierung try/catch
 	try 
 	{   alter = scanner.nextInt();
-		if (alter>0||alter<99)//Wenn Eingabe außerhalb 0 bis 99 liegt
-		{   System.out.println("[ Meldung : Gib ein Alter zwischen 0 und 99 an ]");
+		if (alter<0||alter>99)//Wenn Eingabe außerhalb 0 bis 99 liegt
+		{   System.out.println("[ Meldung : Bitte gib ein Alter zwischen 0 und 99 an ]");
 		    alter = scanner.nextInt();
 	      }
 	  }
@@ -222,7 +222,7 @@ public class Fitness_assistent {
 	//(5) Antwort scannen
 	geschlecht = scanner.nextLine();
 	
-	//(5) if else Anweisung für die Wertezuweisung        !Eingabevalidierung verbessern!
+	//(5) if else Anweisung für die Wertezuweisung        
 	if (geschlecht.equalsIgnoreCase("m"))
 	{geschlecht = "männlich";}
 	else if (geschlecht.equalsIgnoreCase("w"))
