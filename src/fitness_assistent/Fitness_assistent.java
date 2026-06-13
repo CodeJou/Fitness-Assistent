@@ -20,51 +20,102 @@ public class Fitness_assistent {
 	//(2) Variablen deklarieren
     double größe_double;
     String größe;
-		
-	//(2) Try/catch Eingabevalidierung
+    
+    //(2) Antwort scannen
+    größe = scanner.nextLine();//scannen
+    
+    //(2) Try/catch Eingabevalidierung
+      
 	try
 	{
-		größe = scanner.nextLine();//scannen
-		
 	    if (größe.contains(" m"))//if else Anweisung wenn Eingabe Maßeinheit + Leerzeichen beinhaltet
 	    { größe = größe.replace(" m","");//Maßeinheit entfernen
 	      größe = größe.toUpperCase();//Wert nach Entfernung der Maßeinheit neu zuweisen
-	    	}
+	     }
 	
 	    else
 	    { größe = größe.replace("m","");
-	      größe = größe.toUpperCase();}
-	      	
-
-	    if (größe.contains(","))
-    	{ größe = größe.replace(",",".");
-    	größe = größe.toUpperCase();}
+	      größe = größe.toUpperCase();
+	     }   
 	    
-	    größe_double = Double.parseDouble(größe);//Datentyp String in Double umrechnen
-    }
+		if (größe.contains(","))//wenn Komma eingegeben ist
+	    {	größe = größe.replace(",",".");//Komma durch Punkt ersetzen
+	   	    größe = größe.toUpperCase();//Variable neu zuordnen
+	   	  }
+	  	 
+	        größe_double = Double.parseDouble(größe);// Datentyp String in Double umwandeln
+	        
+	     while (größe_double>2.1||größe_double<1.0)//While Schleife wenn Zahlenwerte außerhalb 1.00 und 2.10 Metern angegeben sind
+	    {	System.out.println("[ Meldung: Bitte gib einen Zahlenwert zwischen 1.00 Meter und 2.10 Meter an (z.B 1.64m ]");
+	    	größe = scanner.nextLine();
+	    
+	    	if (größe.contains(" m"))//if else Anweisung wenn Eingabe Maßeinheit + Leerzeichen beinhaltet
+	    	{   größe = größe.replace(" m","");//Maßeinheit entfernen
+	    	    größe = größe.toUpperCase();//Wert nach Entfernung der Maßeinheit neu zuweisen
+	    	 }
 	
-	catch (java.lang.NumberFormatException exception_2)//Fehlermeldung abfangen bei fehlerhafter Eingabe
+	    	else
+	    	{   größe = größe.replace("m","");
+	    	    größe = größe.toUpperCase();
+	    	 }   
+	    
+	    	if (größe.contains(","))//wenn Komma eingegeben ist
+	    	{	größe = größe.replace(",",".");//Komma durch Punkt ersetzen
+	   	    	größe = größe.toUpperCase();//Variable neu zuordnen
+	   	      }
+	  	 
+	      größe_double = Double.parseDouble(größe);// Datentyp String in Double umwandeln
+	     }
+      }
+	
+	
+	catch (java.lang.NumberFormatException exception_2)//Fehlermeldung abfangen bei fehlerhafter Eingabe (Bei Eingabe "cm")
     { 
 		System.out.println("[ Meldung: Bitte gib deine Größe als Zahlenwert in m (z.B 1.64m) an ]");
 	    größe = scanner.nextLine();
 	    
-	     if (größe.contains(" m"))//If Anweisung wenn Maßeinheit mit angegeben wurde + Leerzeichen
-	       { größe = größe.replace(" m","");//Maßeinheit und Leerzeichen Löschen
-	       größe = größe.toUpperCase();}//Variable neu zuordnen
+	    if (größe.contains(" m"))//If Anweisung wenn Maßeinheit mit angegeben wurde + Leerzeichen
+	    { 	größe = größe.replace(" m","");//Maßeinheit und Leerzeichen Löschen
+	       	größe = größe.toUpperCase();//Variable neu zuordnen
+	      }
 	    
-	     else
-	       { größe = größe.replace("m","");//Maßeinheit löschen
-	       größe = größe.toUpperCase();}//Variable neu zuordnen
+	    else
+	    { 	größe = größe.replace("m","");//Maßeinheit löschen
+	    	größe = größe.toUpperCase();//Variable neu zuordnen
+	      }
 	     
-	     if (größe.contains(","))//wenn Komma eingegeben ist
-	    	{ größe = größe.replace(",",".");//Komma durch Punkt ersetzen
-	    	größe = größe.toUpperCase();}//Variable neu zuordnen
+	    if (größe.contains(","))//wenn Komma eingegeben ist
+	    {	größe = größe.replace(",",".");//Komma durch Punkt ersetzen
+	   	    größe = größe.toUpperCase();//Variable neu zuordnen
+	   	  }
+	  	 
+	    größe_double = Double.parseDouble(größe);// Datentyp String in Double umwandeln
 	    
-	       größe_double = Double.parseDouble(größe);//Datentyp String zu Double umwandeln
+	    while (größe_double>2.1||größe_double<1.0)//While Schleife wenn Zahlenwerte außerhalb 1.00 und 2.10 Metern angegeben sind
+	    {	System.out.println("[ Meldung: Bitte gib einen Zahlenwert zwischen 1.00 Meter und 2.10 Meter an (z.B 1.64m ]");
+	    	größe = scanner.nextLine();
+	    
+	    	if (größe.contains(" m"))//if else Anweisung wenn Eingabe Maßeinheit + Leerzeichen beinhaltet
+	    	{ 	größe = größe.replace(" m","");//Maßeinheit entfernen
+	        	größe = größe.toUpperCase();//Wert nach Entfernung der Maßeinheit neu zuweisen
+	    	 }
+	
+	        else
+	        { 	größe = größe.replace("m","");
+	        	größe = größe.toUpperCase();
+	         }   
+	    
+	    	if  (größe.contains(","))//wenn Komma eingegeben ist
+	        {	größe = größe.replace(",",".");//Komma durch Punkt ersetzen
+	   	    	größe = größe.toUpperCase();//Variable neu zuordnen
+	   	     }
+	  	 
+	  	   größe_double = Double.parseDouble(größe);// Datentyp String in Double umwandeln
+	    }
 	 }
 	
 	
-	//(3) Abfrage Gewicht
+	 //(3) Abfrage Gewicht
 	System.out.println("");
 	System.out.println("Wieviel wiegst du? (Gib dein Gewicht in kg an)");
 	
@@ -74,23 +125,25 @@ public class Fitness_assistent {
 	
 	//(3) Try/Catch Eingabevalidierung
 	try 
-	{
-		gewicht = scanner.nextLine();//scannen
+	{	gewicht = scanner.nextLine();//scannen
 		
 		if (gewicht.contains(" kg"))//if else Anweisung wenn Maßeinheit mit Leerzeichen oder/und Komma statt Punkt eingegeben ist
-		{gewicht = gewicht.replace(" kg","");//Maßeinheit löschen
-		gewicht = gewicht.toUpperCase();}//Variable neu zuordnen
+		{	gewicht = gewicht.replace(" kg","");//Maßeinheit löschen
+			gewicht = gewicht.toUpperCase();//Variable neu zuordnen
+		  }
 			
 		else
-		{ gewicht = gewicht.replace("kg","");//Wenn Maßeinheit ohne Leerzeichen oder/und Komma statt Punkt eingegeben ist/Maßeinheit löschen
-		gewicht = gewicht.toUpperCase();}//Variable neu zuordnen
+		{   gewicht = gewicht.replace("kg","");//Wenn Maßeinheit ohne Leerzeichen oder/und Komma statt Punkt eingegeben ist/Maßeinheit löschen
+			gewicht = gewicht.toUpperCase();//Variable neu zuordnen
+		  }
 			
 		if (gewicht.contains(","))//wenn Komma eingegeben ist
-			{gewicht = gewicht.replace(",",".");//Komma durch Punkt ersetzen
-			gewicht = gewicht.toUpperCase();}//Variable neu zuordnen
+		{	gewicht = gewicht.replace(",",".");//Komma durch Punkt ersetzen
+			gewicht = gewicht.toUpperCase();//Variable neu zuordnen
+		  }
 		
 		gewicht_double = Double.parseDouble(gewicht);//Datentyp String zu Double umwandeln
-    }
+      }
 	
 	catch (java.lang.NumberFormatException exception_3)
 	{
@@ -98,16 +151,20 @@ public class Fitness_assistent {
 		gewicht = scanner.nextLine();
 		
 		if (gewicht.contains(" kg"))//if else Anweisung wenn Maßeinheit mit Leerzeichen oder/und Komma statt Punkt eingegeben ist
-		{gewicht = gewicht.replace(" kg","");//Maßeinheit löschen
-		gewicht = gewicht.toUpperCase();}//Variable neu zuordnen
+		{	gewicht = gewicht.replace(" kg","");//Maßeinheit löschen
+			gewicht = gewicht.toUpperCase();//Variable neu zuordnen
+		 }
 		
 		else
-		{ gewicht = gewicht.replace("kg","");//Wenn Maßeinheit ohne Leerzeichen angegeben wurde
-		gewicht = gewicht.toUpperCase();}//Variable neu zuordnen
+		{ 	gewicht = gewicht.replace("kg","");//Wenn Maßeinheit ohne Leerzeichen angegeben wurde
+			gewicht = gewicht.toUpperCase();//Variable neu zuordnen
+		 }
 			
 		if (gewicht.contains(","))//Wenn Komma statt Punkt eingegeben wurde
-		{gewicht = gewicht.replace(",",".");//Komma durch Punkt ersetzen
-		gewicht = gewicht.toUpperCase();}//Variable neu zuordnen
+		{	gewicht = gewicht.replace(",",".");//Komma durch Punkt ersetzen
+			gewicht = gewicht.toUpperCase();//Variable neu zuordnen
+		 }
+		
 		gewicht_double = Double.parseDouble(gewicht);
 	}
 		
@@ -275,7 +332,7 @@ public class Fitness_assistent {
 		double bmi_übergewicht_o = 29.0*größe_double_2;
 		bmi_übergewicht_o = Math.round(bmi_übergewicht_o*10.0)/10.0;
 			
-		//Achtung Rundungsfehler!Muss noch behoben werden!
+		
 			
 			
 		//Tabelle Gewichtskategorie ausgeben
@@ -330,7 +387,7 @@ public class Fitness_assistent {
 		double bmi_übergewicht_o = 29.5*größe_double_2;
 		bmi_übergewicht_o = Math.round(bmi_übergewicht_o*10.0)/10.0;
 					
-		//Achtung Rundungsfehler!Muss noch behoben werden!
+		
 					
 					
 		//Tabelle BMI ausgeben
