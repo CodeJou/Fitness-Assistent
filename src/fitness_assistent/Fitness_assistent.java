@@ -169,12 +169,28 @@ public class Fitness_assistent {
 	}
 		
 	
-	//(4) Abfrage Alter                                !Eingabevalidierung bearbeiten!
+	//(4) Abfrage Alter                                
 	System.out.println("");
 	System.out.println("Wie alt bist du? (Runde dein Alter auf eine ganze Zahl auf)");
-	int alter = scanner.nextInt();
 	
-	//(4) Scanner leeren
+	//(4) Variable deklarieren
+	int alter;
+	
+	//(4) Eingabevalidierung try/catch
+	try 
+	{   alter = scanner.nextInt();
+		if (alter>0||alter<99)//Wenn Eingabe außerhalb 0 bis 99 liegt
+		{   System.out.println("[ Meldung : Gib ein Alter zwischen 0 und 99 an ]");
+		    alter = scanner.nextInt();
+	      }
+	  }
+	catch (java.util.InputMismatchException expection_4)
+	{   System.out.println("[ Meldung: Bitte gib dein Alter als Zahlenwert (zwischen 0 und 99 ) ein! ]");
+		scanner.nextLine();// Scanner leeren
+		alter = scanner.nextInt();
+	 }
+	
+	//(4) scanner leeren
 	scanner.nextLine();
 	
 	//(5) Info
